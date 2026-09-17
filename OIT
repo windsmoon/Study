@@ -1,14 +1,15 @@
-Alpha Blending 的顺序依赖
-透明物体排序问题
-OIT 基本思想
-Depth Peeling
-Front-to-Back 透明合成
-A-Buffer
-PPLL（Per-Pixel Linked List）
-PPLL 的原子操作、链表、排序与性能问题
-Weighted Blended OIT
-Accum / Revealage
-深度权重 \(w\)
-MRT 与 Blend State
-ZTest On / ZWrite Off
-各种 OIT 方案的优缺点与适用场景
+普通 Alpha Blend 依赖远到近排序
+相交透明物体无法靠物体级排序彻底解决
+OIT：不依赖透明物体提交顺序进行合成
+Depth Peeling：逐层找最近透明层
+Front-to-Back：用透过率 \(T\) 从近到远累积
+A-Buffer：每像素保存多个 Fragment
+PPLL：用逐像素链表实现 A-Buffer
+PPLL 需要原子操作、Node Buffer、最终排序
+PPLL 精确但显存、随机访存、排序成本高
+Weighted Blended OIT：不排序，用权重近似前后关系
+Accum 累积颜色和权重
+Revealage 累积总透过率
+Weighted OIT 的颜色是近似，透过率更稳定
+Weighted OIT 通常 ZTest On / ZWrite Off
+烟雾粒子适合 Weighted OIT，要求精确的透明表面更适合 PPLL
