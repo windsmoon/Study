@@ -1,0 +1,14 @@
+Alpha Blending 的顺序依赖
+透明物体排序问题
+OIT 基本思想
+Depth Peeling
+Front-to-Back 透明合成
+A-Buffer
+PPLL（Per-Pixel Linked List）
+PPLL 的原子操作、链表、排序与性能问题
+Weighted Blended OIT
+Accum / Revealage
+深度权重 \(w\)
+MRT 与 Blend State
+ZTest On / ZWrite Off
+各种 OIT 方案的优缺点与适用场景
